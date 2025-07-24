@@ -1,38 +1,105 @@
+# Face Attendance System using Face Recognition
 
-# Face based attendance system using python and openCV
+![Python](https://img.shields.io/badge/Python-3.9%2B-blue)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.x-green)
+![Streamlit](https://img.shields.io/badge/Streamlit-Web%20UI-orange)
 
-[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)                 
-[![Python 3.9](https://img.shields.io/badge/python-3.9-blue.svg)](https://www.python.org/downloads/release/python-390/) 
+## Overview
+This project is a Face Recognition-based Attendance Management System built with Python, OpenCV, and Tkinter for the desktop UI, and Streamlit for a modern web UI. It allows you to register students, train a face recognition model, mark attendance automatically using a webcam or camera input, and view attendance records.
 
-### What steps you have to follow??
-- Download or clone my Repository to your device
-- type `pip install -r requirements.txt` in command prompt(this will install required package for project)
-- Create a `TrainingImage` folder in a project folder.
-- open `attendance.py` and `automaticAttendance.py`, change all the path accoriding to your system
-- Run `attandance.py` file
+## Features
+- **Register New Students**: Capture face images and store student details.
+- **Train Model**: Train a face recognition model using the registered images.
+- **Automatic Attendance**: Mark attendance by recognizing faces in real-time (Tkinter) or from camera input (Streamlit demo).
+- **View Attendance**: Display attendance records in tabular format.
+- **Modern Web UI**: Use Streamlit for a browser-based experience.
 
-### Project flow & explaination
-- After you run the project you have to register your face so that system can identify you, so click on register new student
-- After you click a small window will pop up in that you have to enter you ID and name and then click on `Take Image` button
-- After clicking `Take Image` button A camera window will pop up and it will detect your Face and take upto 50 Images(you can change the number of Image it can take) and stored in the folder named `TrainingImage`. more you give the image to system, the better it will perform while recognising the face.
-- Then you have to click on `Train Image` button, It will train the model and convert all the Image into numeric format so that computer can understand. we are training the image so that next time when we will show the same face to the computer it will easily identify the face.
-- It will take some time(depends on you system).
-- After training model click on `Automatic Attendance` ,you have to enter the subject name and then it can fill attendace by your face using our trained model.
-- it will create `.csv` file for every subject you enter and seperate every `.csv` file accoriding the subject
-- You can view the attendance after clicking `View Attendance` button. It will show record in tabular format.
+## Project Structure
+```
+Attendance-Management-system-using-face-recognition/
+├── attendance.py                # Main Tkinter GUI
+├── app_streamlit.py             # Streamlit web app
+├── automaticAttedance.py        # Attendance logic
+├── takeImage.py                 # Image capture logic
+├── trainImage.py                # Model training logic
+├── show_attendance.py           # Attendance viewing logic
+├── requirements.txt             # Python dependencies
+├── StudentDetails/
+│   └── studentdetails.csv       # Student info
+├── TrainingImage/               # Registered face images
+├── TrainingImageLabel/
+│   └── Trainner.yml             # Trained model
+├── Attendance/                  # Attendance CSVs
+├── UI_Image/                    # UI images
+└── ...
+```
 
-### Screenshots
+## Setup Instructions
+1. **Clone the repository**
+   ```bash
+   git clone <repo-url>
+   cd Attendance-Management-system-using-face-recognition
+   ```
+2. **Create and activate a virtual environment**
+   ```bash
+   python -m venv venv
+   .\venv\Scripts\activate
+   ```
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. **(Optional) For Streamlit Web UI**
+   ```bash
+   pip install streamlit
+   ```
 
-### Simple UI
-<img src='https://github.com/Patelrahul4884/Attendance-Management-system-using-face-recognition/blob/master/Project%20Snap/1.PNG'>
+## Usage
+### Desktop (Tkinter) App
+1. Run the main app:
+   ```bash
+   python attendance.py
+   ```
+2. Use the GUI to register students, train the model, mark attendance, and view records.
 
-### While taking Image
-![Screenshot (103)](https://user-images.githubusercontent.com/26384517/86820502-c7f44500-c0a6-11ea-9530-6317ec2059d9.png)
+### Web (Streamlit) App
+1. Run the Streamlit app:
+   ```bash
+   python -m streamlit run app_streamlit.py
+   ```
+2. Open your browser at [http://localhost:8501](http://localhost:8501)
+3. Use the sidebar to:
+   - Register new students (with camera input)
+   - Train the model
+   - (Demo) Mark attendance from a photo
+   - View attendance records
 
-## While taking Attendance
-![Screenshot (91)](https://user-images.githubusercontent.com/26384517/86821090-9465ea80-c0a7-11ea-9680-777923663d0c.png)
+## Notes
+- The Streamlit app currently demonstrates registration, training, and attendance viewing. Attendance from a static image is a placeholder and requires further adaptation for real face recognition.
+- All data (images, models, CSVs) are stored locally in the project folders.
+- For best results, provide clear, well-lit face images during registration.
 
-## Attendance in tabular format 
-<img src='https://github.com/Patelrahul4884/Attendance-Management-system-using-face-recognition/blob/master/Project%20Snap/7.PNG'>
+## Requirements
+- Python 3.9+
+- OpenCV
+- Pillow
+- Pandas
+- Streamlit (for web UI)
+- pyttsx3 (for text-to-speech)
 
-## Just follow me and Star⭐ my repository
+Install all requirements with:
+```bash
+pip install -r requirements.txt
+pip install streamlit
+```
+
+## Screenshots
+> Add screenshots of the desktop and web UI here for better documentation.
+
+## License
+This project is for educational purposes. Feel free to use and modify it.
+
+## Author
+Made by Aditya ([GitHub](https://github.com/adityaJhaa))
+
+
