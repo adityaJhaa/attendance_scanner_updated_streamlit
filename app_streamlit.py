@@ -5,7 +5,6 @@ from PIL import Image
 import pandas as pd
 import os
 import datetime
-import pyttsx3
 
 # Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -15,11 +14,7 @@ STUDENT_CSV = os.path.join(BASE_DIR, "StudentDetails", "studentdetails.csv")
 ATTENDANCE_DIR = os.path.join(BASE_DIR, "Attendance")
 CASCADE_PATH = os.path.join(BASE_DIR, "haarcascade_frontalface_default.xml")
 
-# Text to speech
-engine = pyttsx3.init()
-def text_to_speech(text):
-    engine.say(text)
-    engine.runAndWait()
+
 
 st.set_page_config(page_title="Face Attendance System", layout="centered")
 st.title("Face Based Attendance System")
@@ -47,7 +42,7 @@ if choice == "Register New Student":
                 if not ((df["Enrollment"] == enroll) & (df["Name"] == name)).any():
                     df = df.append({"Enrollment": enroll, "Name": name}, ignore_index=True)
                     df.to_csv(STUDENT_CSV, index=False)
-            text_to_speech(f"Registered {name}")
+
         else:
             st.warning("Please enter all details and take a picture.")
 
@@ -56,7 +51,7 @@ elif choice == "Train Images":
     if st.button("Train Model"):
         try:
             import trainImage
-            trainImage.TrainImage(CASCADE_PATH, TRAINING_IMAGE_DIR, TRAINING_LABEL_PATH, None, text_to_speech)
+            trainImage.TrainImage(CASCADE_PATH, TRAINING_IMAGE_DIR, TRAINING_LABEL_PATH, None, None)
             st.success("Model trained successfully!")
         except Exception as e:
             st.error(f"Error: {e}")
